@@ -170,15 +170,3 @@ Run tests with `npm test` (34 tests, all passing).
 | Self-transfer | Same sender & receiver | Error: "must be different" |
 | Force error | clientReference ending in `-ERR` | ERR006: Internal processing error |
 
----
-
-## Screenshots
-
-### Payment Form
-*(Screenshot of the form with all fields filled)*
-
-### Successful Transaction
-*(Screenshot showing SUCCESS status with transaction ID)*
-
-### Failed Transaction
-*(Screenshot showing FAILED status with error details)*

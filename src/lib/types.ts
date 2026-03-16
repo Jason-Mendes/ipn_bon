@@ -144,15 +144,6 @@ export interface P2PPaymentResponse {
 export const INSUFFICIENT_FUNDS_THRESHOLD = 10_000;
 
 /**
- * Probability (0–1) that a valid request will randomly fail with ERR006
- * to simulate real-world system instability.
- *
- * Set to 0 in this implementation. ERR006 is triggered deterministically
- * when `clientReference` ends with `-ERR` instead, making it testable.
- */
-export const RANDOM_FAILURE_RATE = 0;
-
-/**
  * Suffix that, when present at the end of a `clientReference`, forces
  * the mock API to return ERR006 (Internal processing error).
  * This provides a deterministic way to test error handling.

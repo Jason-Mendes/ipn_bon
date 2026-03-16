@@ -90,7 +90,7 @@ export const paymentRequestSchema = z
     receiverAccountNumber: accountNumberSchema("Receiver account number"),
 
     amount: z
-      .number({ message: "Amount must be a number" })
+      .number({ message: "Amount is required and must be a valid number" })
       .positive("Amount must be greater than 0")
       .transform((val) => Math.round(val * 100) / 100),
 
@@ -119,31 +119,6 @@ export const paymentRequestSchema = z
  * (e.g., amount is already rounded to 2 decimal places).
  */
 export type ValidatedPaymentRequest = z.infer<typeof paymentRequestSchema>;
-
-// ---------------------------------------------------------------------------
-// Client-Side Field Validation (for inline form errors)
-// ---------------------------------------------------------------------------
-
-/**
- * Schema for validating individual form fields on the client side.
- * Unlike `paymentRequestSchema`, this doesn't include cross-field
- * validations (like sender !== receiver) because those only make sense
- * when all fields are present.
- *
- * Used by the PaymentForm component for inline error messages as the
- * user types.
- */
-export const clientFieldSchemas = {
-  senderAccountNumber: accountNumberSchema("Sender account number"),
-  receiverAccountNumber: accountNumberSchema("Receiver account number"),
-  amount: z
-    .number({ message: "Amount must be a number" })
-    .positive("Amount must be greater than 0"),
-  reference: z
-    .string()
-    .min(1, "Payment reference is required")
-    .max(50, "Payment reference must be 50 characters or fewer"),
-} as const;
 
 // ---------------------------------------------------------------------------
 // Error Code Mapping

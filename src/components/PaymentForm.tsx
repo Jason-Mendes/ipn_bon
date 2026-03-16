@@ -80,7 +80,7 @@ export default function PaymentForm({ onResult }: PaymentFormProps) {
         clientReference,
         senderAccountNumber: senderAccountNumber.trim(),
         receiverAccountNumber: receiverAccountNumber.trim(),
-        amount: parseFloat(amount),
+        amount: amount.trim() === "" ? NaN : parseFloat(amount),
         currency: "NAD",
         reference: reference.trim(),
       };
@@ -91,7 +91,7 @@ export default function PaymentForm({ onResult }: PaymentFormProps) {
         const errors: FieldErrors = {};
         for (const issue of validation.error.issues) {
           const field = issue.path[0] as keyof FieldErrors | undefined;
-          if (field && field in errors === false) {
+          if (field && !(field in errors)) {
             errors[field] = issue.message;
           }
         }

@@ -149,7 +149,13 @@ ipn_bon/
 
 ---
 
-## Testing Scenarios
+## Testing
+
+The spec does not require tests, but they were included to verify that all validation rules and error code mappings behave correctly. Tests run at the validation boundary — where data enters the system — because that is where bugs in a payment application are most likely to cause real damage. This also makes it easy to demonstrate that each error code (ERR001–ERR006) fires under the right conditions.
+
+Run tests with `npm test` (34 tests, all passing).
+
+### Testing Scenarios
 
 | Scenario | Input | Expected Result |
 |---|---|---|
